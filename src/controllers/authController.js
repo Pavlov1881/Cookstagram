@@ -5,7 +5,7 @@ const { getErrorMessage } = require('../utils/errorUtils');
 
 
 router.get('/login', (req, res) => {
-    res.render('src/auth/login');
+    res.render('auth/login');
 });
 
 router.post('/login', async (req, res) => {
@@ -26,7 +26,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/register', (req, res) => {
-    res.render('src/auth/register');
+    res.render('auth/register');
 });
 
 router.post('/register', async (req, res) => {
