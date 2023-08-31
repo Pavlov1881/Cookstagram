@@ -5,7 +5,7 @@
   border-radius: 50%/ 0 0 40px 40px;
   margin-top: 5%;
   width: 100%;
-  background-color: #ffdeefd2;
+  background-color: #52bdead2;
 }
 
 .welcome-content-text {
@@ -35,10 +35,10 @@ h1.bold-welcome {
 }
 
 .welcome-content-image {
-  width: 600px;
-  position: relative;
+  width: 700px;
+  position: absolute;
   top: 64px;
-  right: 40px;
+  right: 1px;
 }
 
 .welcome-content-image img {
@@ -73,7 +73,7 @@ h1.bold-welcome {
   box-shadow: 0 5px 10px black;
 }
 
-.errorContainer > p {
+.errorContainer>p {
   background: gray;
   font-size: 20px;
   padding: 20px;
