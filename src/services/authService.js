@@ -4,32 +4,32 @@ const jwt = require('../lib/jsonWebToken');
 const { SECRET } = require('../constants');
 
 
-exports.findByUsername = (username) => User.findOne({ username });
+exports.findByEmail = (email) => User.findOne({ email });
 
-exports.register = async (username, email, password, repeatPassword) => {
+exports.register = async (email, username, password, confirmPassword) => {
 
     //! validate password
-    if (password.length <= 4) {
-        throw new Error('Password must be at least 4 characters long!');
+    if (password.length <= 3) {
+        throw new Error('Password too short');
     }
 
-    if (repeatPassword !== password) {
+    if (confirmPassword !== password) {
         throw new Error('Password don`t match!');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await User.create({ username, email, password: hashedPassword });
+    await User.create({ email, username, password: hashedPassword });
 
     // auto login after register
-    return this.login(username, password);
+    return this.login(email, password);
 };
 
 
-exports.login = async (username, password) => {
+exports.login = async (email, password) => {
 
     // user exist
-    const user = await this.findByUsername(username);
+    const user = await this.findByEmail(email);
     if (!user) {
         throw new Error('Invalid email or password');
     }
@@ -43,6 +43,7 @@ exports.login = async (username, password) => {
     // generate token
     const payload = {
         _id: user._id,
+        email,
         username: user.username,
     };
 
