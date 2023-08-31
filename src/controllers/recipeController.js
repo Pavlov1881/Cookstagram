@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { isLogged } = require('../middlewares/authMiddleware');
 const { getErrorMessage } = require('../utils/errorUtils');
-//! import service
+const recipeService = require('../services/recipeService');
 
 
 

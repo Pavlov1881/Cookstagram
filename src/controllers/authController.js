@@ -5,7 +5,7 @@ const { getErrorMessage } = require('../utils/errorUtils');
 
 
 router.get('/login', (req, res) => {
-    res.render('auth/login');
+    res.render('src/auth/login');
 });
 
 router.post('/login', async (req, res) => {
@@ -19,14 +19,14 @@ router.post('/login', async (req, res) => {
 
     } catch (error) {
 
-        return res.status(404).render('auth/login', { error: getErrorMessage(error) });
+        return res.status(404).render('src/auth/login', { error: getErrorMessage(error) });
     }
 
 
 });
 
 router.get('/register', (req, res) => {
-    res.render('auth/register');
+    res.render('src/auth/register');
 });
 
 router.post('/register', async (req, res) => {
@@ -38,7 +38,7 @@ router.post('/register', async (req, res) => {
         res.cookie('auth', token);
         res.redirect('/');
     } catch (error) {
-        res.status(400).render('auth/register', { error: getErrorMessage(error) })
+        res.status(400).render('src/auth/register', { error: getErrorMessage(error) })
     }
 
 });
@@ -49,7 +49,7 @@ router.get('/logout', isLogged, (req, res) => {
 });
 
 router.get('/profile', isLogged, (req, res) => {
-    res.render('auth/profile');
+    res.render('src/auth/profile');
 });
 
 

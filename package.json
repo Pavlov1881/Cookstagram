@@ -1,10 +1,10 @@
 {
-  "name": "exam-scaffold",
+  "name": "cookstagram",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is my first multipage application",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",

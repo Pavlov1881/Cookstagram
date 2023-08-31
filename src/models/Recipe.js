@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
-//! change
-const gameSchema = new mongoose.Schema({
+const recipeSchema = new mongoose.Schema({
     name: {
         type: String,
         minLength: 4,
@@ -12,12 +11,12 @@ const gameSchema = new mongoose.Schema({
         required: [true, 'Image is required!'],
         validate: {
             validator: (value) => /^https?:\/\//gi.test(value),
-            message: 'The Crypto Image URL must start with http:// or https://',
+            message: 'The image URL must start with http:// or https://',
         }
     },
-    price: {
+    cookingTime: {
         type: Number,
-        min: [0, 'Price should be a positive number'],
+        min: [0, 'Time should be a positive number'],
         required: [true, 'Price is required!'],
     },
     description: {
@@ -25,19 +24,6 @@ const gameSchema = new mongoose.Schema({
         minLength: [10, 'Description should be at least 10 characters long!'],
         required: [true, 'Description is required!'],
     },
-    genre: {
-        type: String,
-        minLength: [2, 'Genre should be at least 2 characters long!'],
-        required: [true, 'Genre is required!'],
-    },
-    platform: {
-        type: String,
-        enum: ["PC", "Nintendo", "PS4", "PS5", "XBOX"],
-    },
-    boughtBy: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'User'
-    }],
     owner: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
@@ -52,10 +38,9 @@ const gameSchema = new mongoose.Schema({
             type: String,
             required: [true, 'Comment text is required'],
         }
-
     }],
 });
-//! change
-const Game = mongoose.model('Game', gameSchema);
 
-module.exports = Game;
+const Recipe = mongoose.model('Recipe', recipeSchema);
+
+module.exports = Recipe;

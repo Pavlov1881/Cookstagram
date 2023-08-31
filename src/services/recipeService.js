@@ -43,3 +43,5 @@
 // };
 
 //! import model
+
+const Recipe = require('../models/Recipe');

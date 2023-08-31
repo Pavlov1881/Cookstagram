@@ -4,8 +4,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const { authMiddleware } = require('./middlewares/authMiddleware');
 
-//! change DB name
-const databaseName = 'book-talk';
+const databaseName = 'cookstagram';
 
 const routes = require('./routes');
 
@@ -14,9 +13,9 @@ app.engine('hbs', handlebars.engine({
     extname: 'hbs',
 }));
 app.set('view engine', 'hbs');
+app.set('views', './src/views');
 
-// app.use('/static', express.static('public'));
-app.use(express.static('public'));
+app.use('/static', express.static('src/public'));
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
