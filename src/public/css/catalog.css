@@ -40,10 +40,18 @@ body {
   color: white;
 }
 
-.nav-item a i{
+.nav-item a i {
   color: white;
   text-decoration: underline;
   text-decoration-color: white;
+}
+
+.nav-item a i:hover {
+  color: rgb(41, 213, 219);
+}
+
+.nav-item a i:active {
+  color: rgba(244, 186, 86, 0.724);
 }
 
 .errorlist li {
@@ -80,6 +88,7 @@ body {
   display: block;
   color: black;
 }
+
 
 .nav-group {
   display: flex;
@@ -289,4 +298,3 @@ main .container {
   border: 1px solid black;
   padding: 30px;
 }
-
