@@ -6,6 +6,7 @@ const recipeController = require('./controllers/recipeController');
 
 router.use(homeController);
 router.use(authController);
+router.use('/recipes', recipeController);
 
 router.all('*', (req, res) => {
     res.render('404');
