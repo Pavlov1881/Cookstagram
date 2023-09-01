@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const recipeSchema = new mongoose.Schema({
-    name: {
+    recipeFor: {
         type: String,
         minLength: 4,
         required: [true, 'Name is required!'],
@@ -23,6 +23,11 @@ const recipeSchema = new mongoose.Schema({
         type: String,
         minLength: [10, 'Description should be at least 10 characters long!'],
         required: [true, 'Description is required!'],
+    },
+    products: {
+        type: String,
+        minLength: [10, 'Products should be at least 10 characters long!'],
+        required: [true, 'Products is required!'],
     },
     owner: {
         type: mongoose.Types.ObjectId,
