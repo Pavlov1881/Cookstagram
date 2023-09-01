@@ -42,6 +42,7 @@ h1.bold-welcome {
 }
 
 .welcome-content-image img {
+  border-radius: 70px;
   width: 100%;
 }
 
