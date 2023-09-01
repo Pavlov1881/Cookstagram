@@ -1,0 +1,38 @@
+<div class="card">
+
+    <!-- Start User Details and R Location -->
+    <div class="top">
+        <div class="userDetails">
+            <!-- Link to User Profile Page -->
+            <a href="#" action="#" method="#">
+                <div class="profilepic">
+                    <div class="profile_img">
+                        <div class="image">
+                            <img src="/static/images/user-logo.png">
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <h3>
+                <!-- Link to User Profile Page -->
+                <p>
+                    <!-- show user username -->
+                    {{owner.username}}
+                </p>
+            </h3>
+        </div>
+    </div>
+
+    <!-- Start Recipe Photo -->
+    <div class="imgBx">
+        <img src="{{image}}" alt="post" class="cover">
+    </div>
+    <!-- Name of Recipe -->
+    <h5 class="recipeName">Recipe for: {{recipeFor}}</h5>
+    <!-- Cooking time -->
+    <h5 class="cookingTime">Cooking time: {{cookingTime}} min</h5>
+    <!-- Link to Photo Details Page -->
+    <a href="/recipes/{{_id}}/deitails" id="see-details">
+        <h4 class="details">See details</h4>
+    </a>
+</div>
