@@ -6,30 +6,30 @@ const { SECRET } = require('../constants');
 
 exports.findByEmail = (email) => User.findOne({ email });
 
-exports.register = async (email, username, password, confirmPassword) => {
+exports.register = async (username, email, password, repeatPassword) => {
 
     //! validate password
     if (password.length <= 3) {
         throw new Error('Password too short');
     }
 
-    if (confirmPassword !== password) {
+    if (repeatPassword !== password) {
         throw new Error('Password don`t match!');
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await User.create({ email, username, password: hashedPassword });
+    await User.create({ username, email, password: hashedPassword });
 
     // auto login after register
-    return this.login(email, password);
+    return this.login(username, password);
 };
 
 
-exports.login = async (email, password) => {
+exports.login = async (username, password) => {
 
     // user exist
-    const user = await this.findByEmail(email);
+    const user = await User.find(username);
     if (!user) {
         throw new Error('Invalid email or password');
     }
@@ -43,7 +43,6 @@ exports.login = async (email, password) => {
     // generate token
     const payload = {
         _id: user._id,
-        email,
         username: user.username,
     };
 
