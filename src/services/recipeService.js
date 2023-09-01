@@ -49,3 +49,5 @@ const Recipe = require('../models/Recipe');
 exports.getAll = () => Recipe.find();
 
 exports.create = (recipeData) => Recipe.create(recipeData);
+
+exports.getOne = (recipeId) => Recipe.findById(recipeId);
