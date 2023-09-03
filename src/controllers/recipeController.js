@@ -27,7 +27,18 @@ router.get('/:recipeId/details', async (req, res) => {
     } catch (error) {
         res.render('recipes/catalog', { error: getErrorMessage(error) });
     }
-})
+});
+
+router.get('/:recipeId/delete', isLogged, async (req, res) => {
+    try {
+        const recipeId = req.params.recipeId;
+        await recipeService.delete(recipeId);
+
+        res.redirect('/recipes/catalog');
+    } catch (error) {
+        res.render(`recipes/${recipesId}/details`, { error: getErrorMessage(error) });
+    }
+});
 
 router.get('/add', isLogged, (req, res) => {
     res.render('recipes/addRecipe');

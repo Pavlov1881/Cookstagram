@@ -51,3 +51,5 @@ exports.getAll = () => Recipe.find();
 exports.create = (recipeData) => Recipe.create(recipeData);
 
 exports.getOne = (recipeId) => Recipe.findById(recipeId);
+
+exports.delete = (recipeId) => Recipe.findByIdAndDelete(recipeId);
