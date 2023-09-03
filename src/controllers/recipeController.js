@@ -17,16 +17,15 @@ router.get('/catalog', async (req, res) => {
 router.get('/:recipeId/details', async (req, res) => {
     try {
         const recipeId = req.params.recipeId;
-        const selectedRecipe = recipeService
+        const selectedRecipe = await recipeService
             .getOne(recipeId)
-            .populate('commentsList.user')
             .lean();
 
         const isOwner = req.user?._id == selectedRecipe.owner._id;
 
-        res.render('recipes/details', { selectedRecipe, isOwner })
+        res.render('recipes/details', { selectedRecipe, isOwner });
     } catch (error) {
-        res.render('recipes/catalog', { error: getErrorMessage(error) })
+        res.render('recipes/catalog', { error: getErrorMessage(error) });
     }
 })
 
